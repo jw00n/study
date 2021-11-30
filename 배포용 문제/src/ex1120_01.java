@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class ex1120_01 {
+	public static void main(String[] args) {
+		// 최대공약수 &최소공배수를 출력하시오.
+		Scanner sc = new Scanner(System.in);
+		System.out.print("숫자1 입력>> ");
+		int n1 = sc.nextInt();
+		System.out.print("숫자2 입력>> ");
+		int n2 = sc.nextInt();
+		
+		int length= n1>n2? n2: n1;
+		
+		
+		int gcm=1;//greatest common measure
+		int lcm=1; //least common multiple
+
+		// 최대공약수 = 두 자연수에 대하여 공통된 약수 중 가장 큰 자연수를 의미합니다
+		// 최소공배수 = 두 수의 최소공배수는 두 수에 서로 공통으로 존재하는 배수 중 가장 작은 수를 뜻합니다.
+
+		// 소인수분해부터 해야되는거아닌가?길이을 뭐라하지 근데 뭘로나눠야하지 다 나눠볼수는 없고
+		//여기는 왜 i*i로 하면 안되는걸까. 그게 의문이로다
+		for (int i = 2; i<= length; i++) {
+			while (n1 % i == 0 && n2 % i == 0) { //두 수가 i로 나뉠때 
+				n1/=i;
+				n2/=i;
+				gcm*=i;
+			}	
+		}
+		
+		lcm= gcm*n1*n2;
+		System.out.println("최대공약수 : "+gcm);
+		System.out.println("최소공배수 : "+lcm);
+
+	}
+}
