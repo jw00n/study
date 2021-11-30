@@ -7,9 +7,9 @@ public class ex12 {
 		int n = sc.nextInt();
 
 		int[][] arr = new int[n][n];
-
 		int start=1;
 
+		//==È¦¼ö¸¸ °¡´É ==
 		for(int i=0; i<arr.length; i++) {
 			int index= Math.abs(arr.length/2-i);
 			for(int j=index; j<arr.length-index; j++) {

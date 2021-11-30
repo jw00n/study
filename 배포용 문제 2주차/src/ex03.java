@@ -6,7 +6,7 @@ public class ex03 {
 	Random random= new Random();
 	System.out.print("배열에 있는 모든값: ");
 	for(int i=0; i<arr.length; i++) {
-		arr[i]= random.nextInt(100);
+		arr[i]= random.nextInt(100)+1;
 		System.out.print(arr[i]+" ");
 		
 	}

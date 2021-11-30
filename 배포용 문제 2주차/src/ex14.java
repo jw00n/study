@@ -13,7 +13,7 @@ public class ex14 {
 		System.out.println("원본");
 
 		for (int i = 0; i < len; i++) {
-			for (int j = 0; j < i-j; j++) {
+			for (int j = 0; j < len; j++) {
 				arr[i][j] = j+1+i*len;
 				System.out.print(arr[i][j] + "\t");
 			}
@@ -22,15 +22,15 @@ public class ex14 {
 
 		System.out.println("90도 회전");
 		//i행이 j열로 이동한다.
-		for (int i = 0; i < len; i++) {
-			for (int j = 0; j <= i; j++) {
-		
+		for (int j = 0; j <len; j++) {
+			for (int i = 0; i <len; i++) {
+		arr2[len-1-i][j]=arr[j][i];
 			}
 		}
 
 		for (int i = 0; i < len; i++) {
 			for (int j = 0; j < len; j++) {
-				System.out.print(arr[i][j] + "\t");
+				System.out.print(arr2[i][j] + "\t");
 			}
 			System.out.println();
 		}
