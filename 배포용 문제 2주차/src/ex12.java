@@ -14,7 +14,6 @@ public class ex12 {
 			int index= Math.abs(arr.length/2-i);
 			for(int j=index; j<arr.length-index; j++) {
 				arr[i][j]=start++;
-				//이 쉬운걸 이렇게 헤매다니 ㅠㅠ 행복
 			}
 		}
 		
