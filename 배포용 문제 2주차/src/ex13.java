@@ -7,7 +7,7 @@ public class ex13 {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
 
-		// 얘 다시 풀어야함.
+		// 얘 다시  풀어야함.
 		int[][] arr = new int[n][n];
 
 		int len = arr.length;
