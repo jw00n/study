@@ -16,7 +16,7 @@ public class ch3_op {
 
 			if (x == ans) { // 정답을 맞춘 경우
 				System.out.println("맞췄습니다.");
-				System.out.println("다시 하시겠습니까? Y/N");
+				System.out.println(" 다시 하시겠습니까? Y/N");
 				str = sc.next();
 
 				if (str.equals("Y")) { // 다시 하겠다에 Y를 답한 경우
