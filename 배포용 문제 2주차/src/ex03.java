@@ -10,10 +10,11 @@ public class ex03 {
 		System.out.print(arr[i]+" ");
 		
 	}
-	
-	int max=arr[0];
+	//비교군 - 초기화는 가장 첫번째 것으로 
+	int max=arr[0]; 
 	int min=arr[0];
 	
+	//비교는 최대,최대를 둘다 해야하는 상황이 있을수있으므로 if문 두 개
 	for(int i=0; i<arr.length; i++) {
 		if(arr[i]>max) max=arr[i];
 		if(arr[i]<min) min=arr[i];
