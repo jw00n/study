@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class ex1121_01 {
+public class ex1121_01_소인수분해 {
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
