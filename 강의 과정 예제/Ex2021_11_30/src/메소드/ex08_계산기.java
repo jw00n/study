@@ -1,18 +1,17 @@
 package 메소드;
 
-import java.util.Scanner;
 
 public class ex08_계산기 {
 
 	/*
 	 * op를 선언해 원하는 연산자로 초기화 하세요. 연산자에 맞게 연산한 최종값을 반환해주는 cal메소드를 작성하세요.
+	char op = sc.next().charAt(0);
 	 */
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("계산식을 입력하세요>>");
-		int num1 = sc.nextInt();
-		char op = sc.next().charAt(0);
-		int num2 = sc.nextInt();
+		int num1=50;
+		int num2 = 15;
+		char op ='-';
+
 		System.out.println(cal(num1, num2, op));
 
 	}
