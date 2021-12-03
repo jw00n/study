@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="배포용 문제 2주차/src"/>
+	<classpathentry kind="src" path="배포용 문제/src"/>
+	<classpathentry kind="src" path="Ex2021_11_16/src"/>
+	<classpathentry kind="src" path="Ex2021_11_17/src"/>
+	<classpathentry kind="src" path="Ex2021_11_18/src"/>
+	<classpathentry kind="src" path="Ex2021_11_19/src"/>
+	<classpathentry kind="src" path="Ex2021_11_22/src"/>
+	<classpathentry kind="src" path="Ex2021_11_23/src"/>
+	<classpathentry kind="src" path="Ex2021_11_24_25/src"/>
+	<classpathentry kind="src" path="Ex2021_11_30/src"/>
+	<classpathentry kind="src" path="OpenChallenge/src"/>
+	<classpathentry kind="output" path="Ex2021_11_16/bin"/>
+</classpath>
