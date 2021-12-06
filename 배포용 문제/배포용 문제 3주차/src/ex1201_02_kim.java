@@ -1,5 +1,5 @@
 
-public class ex1201_02 {
+public class ex1201_02_kim {
 /*
  * names에 kim의 위치 x를 찾아, string을 반환하세요.
  * kim은 오직한번만 나타나며 잘못된 값이 입력되는 경우는 없습니다.

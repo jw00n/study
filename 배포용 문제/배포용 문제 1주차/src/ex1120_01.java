@@ -19,6 +19,7 @@ public class ex1120_01 {
 		// 최소공배수 = 두 수의 최소공배수는 두 수에 서로 공통으로 존재하는 배수 중 가장 작은 수를 뜻합니다.
 
 		for (int i = 2; i <= length; i++) {
+			System.out.println("길이 ="+length);
 			while (n1 % i == 0 && n2 % i == 0) { // 두 수가 i로 나뉠때 //소인수분해 방식으로
 				n1 /= i;
 				n2 /= i;

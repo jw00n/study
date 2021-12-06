@@ -1,5 +1,5 @@
 
-public class ex1203_03 {
+public class ex1203_03_getMiddle {
 
 	public static void main(String[] args) {
 				

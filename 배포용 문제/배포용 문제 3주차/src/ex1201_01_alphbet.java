@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class ex1201_01 {
+public class ex1201_01_alphbet {
 
 	public static void main(String[] args) {
 		System.out.println(reverseStr("ZAbcdVefEg"));
