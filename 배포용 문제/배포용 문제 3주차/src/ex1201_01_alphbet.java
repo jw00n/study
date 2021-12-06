@@ -12,22 +12,18 @@ public class ex1201_01_alphbet {
 		// 배열 정렬 -> A=65 Z=90 a=97 z=122
 
 		int num = 0;
-
+		//정렬 방식은 버블정렬 
 		for (int i = 0; i < dict.length; i++) {
-			num = dict[i];
+			num = dict[i]; //아스키 코드값을 알아내기 위해 정수형 변수에 dict[i]를 넣어준다.
+			
+			//i가 한번씩 반복될때마다 오른쪽 끝의 값은 점점 차므로 n-1에서 n-1-i까지만 반복하면 된다.
 			for (int j = 0; j < dict.length - 1 - i; j++) {
-				char tmp;
-				if (num >= 65 && num <= 90) { // 대문자
 					if (dict[j] > dict[j + 1]) {
 						exchange(dict, j);
 					}
-				} else { // 소문자
-					if (dict[j] > dict[j + 1]) {
-						exchange(dict, j);
-					}
-				}
-			}
+				} 
 		}
+		
 		// Arrays.sort(dict); //치트키
 
 		String result = "";
