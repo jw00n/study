@@ -38,11 +38,6 @@ public class ex1203_02 {
 		}else if(j>h) {
 			arr[k]=A[h];
 		}
-		
-	
-		
-	
-
 		return arr;
 	}
 	
