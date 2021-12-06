@@ -1,5 +1,5 @@
 
-public class ex1202_03 {
+public class ex1202_03_degree {
 
 	public static void main(String[] args) {
 		String score = "A,A,B,C,D,A,C,D,D,D,F";

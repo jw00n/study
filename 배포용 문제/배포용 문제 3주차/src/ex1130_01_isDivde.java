@@ -1,5 +1,5 @@
 
-public class ex1130_01 {
+public class ex1130_01_isDivde {
 
 	public static void main(String[] args) {
 		int num1 = 10;

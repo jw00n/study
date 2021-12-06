@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 
-public class ex1203_02 {
+public class ex1203_02_merge {
 //합병 후 오름차순으로 정렬하여 반환
 	public static void main(String[] args) {
 		int A[] = {1,3,5,7,9,11,13,15,17,19};

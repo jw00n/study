@@ -1,5 +1,5 @@
 
-public class ex1204_01 {
+public class ex1204_01_Harshad {
 
 	public static void main(String[] args) {
 		// ÇÏ»þµå ¼ö

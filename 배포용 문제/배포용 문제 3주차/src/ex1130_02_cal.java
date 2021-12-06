@@ -1,5 +1,5 @@
 
-public class ex1130_02 {
+public class ex1130_02_cal {
 
 	public static void main(String[] args) {
 		int num1=50;

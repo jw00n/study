@@ -1,5 +1,5 @@
 
-public class ex1204_02 {
+public class ex1204_02_Jump {
 
 	public static void main(String[] args) {
 //멀리뛰기 1칸 or2칸으로 갈 수있는 경우의 수  

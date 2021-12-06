@@ -1,5 +1,5 @@
 
-public class ex1202_01 {
+public class ex1202_01_Perfect {
 
 	/*
 	 * startValue부터 endValue까지 숫자 중 완전수
