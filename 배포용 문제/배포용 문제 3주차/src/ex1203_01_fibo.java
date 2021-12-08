@@ -4,12 +4,9 @@ public class ex1203_01_fibo {
 	public static void main(String[] args) {
 		int input = 8;
 
-	
 		for (int i = 1; i <= input; i++) {
-			
 			System.out.print(fibo(i) + " ");
 		}
-
 	}
 
 	// 피보나치 수열

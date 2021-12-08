@@ -2,7 +2,7 @@
 public class ex1204_02_Jump {
 
 	public static void main(String[] args) {
-//멀리뛰기 1칸 or2칸으로 갈 수있는 경우의 수  
+		//멀리뛰기 1칸 or2칸으로 갈 수있는 경우의 수  
 		//피보나치 수열 or 팩토리얼
 		//7항->21 4항->5 그래서 피보나치 수열?
 		System.out.println(jumpCase(7));
