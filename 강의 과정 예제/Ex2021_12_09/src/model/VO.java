@@ -6,7 +6,7 @@ public class VO {
 	private String name;
 	private int age;
 	
-	
+	//value object
 	public VO(String id, String pw, String name, int age) {
 		this.id = id;
 		this.pw = pw;
@@ -17,7 +17,7 @@ public class VO {
 
 	public String getId() {
 		return id;
-	}
+	}	
 
 
 	public void setId(String id) {
