@@ -8,6 +8,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import System.VO;
+import 전투시스템.Fight;
+
 public class Game_DAO {
 
 	PreparedStatement psmt = null;
@@ -16,7 +19,13 @@ public class Game_DAO {
 	Scanner sc = new Scanner(System.in);
 
 	// vo에 넣을 변수들
-
+	String nickname = null;
+	int charHp; // 체력
+	int charAtt; // 공격력
+	int charExp; // 경험치
+	int charMp; // 마나소비량
+	int floorCount;
+	int lv;
 
 	public void conn() {
 		try {
@@ -51,22 +60,55 @@ public class Game_DAO {
 
 	// ====이하 sql문====//
 
-	public Game_VO select() {
+	public Fight select(String name) {
 
-		
+		conn();
+		String sql = "select * from charact where nickname=?";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, name);
+
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				// System.out.pr213intln(rs.getString("name"));
+				// vo 값 입력
+				nickname = rs.getString("nickname");
+				charHp = rs.getInt("charhp");
+				charAtt = rs.getInt("charatt");
+				charExp = rs.getInt("chatexp");
+				charMp = rs.getInt("charmp");
+				floorCount = rs.getInt("count");
+				lv= rs.getInt("lv");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally { // try 또는 catch가 실행된 후에 반드시 실행.
+			close();
+			if (rs != null) { // 다른 ddl에서는 사용하지않으므로 select문안에서만 close
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		Fight fight = new Fight(nickname, charHp, charMp, charExp, charAtt, floorCount,lv);
+		return fight;
 	}
 
-	public Game_VO  Initial_insert(String name) {
+	public Fight Initial_insert(String name) {
 		String nickname = name; // 캐릭터 명
-		int charHp = 10; // 체력
-		int charAtt = 2; // 공격력
-		int charExp = 0; // 경험치
-		int charMp = 10; // 마나소비량
-		int floorCount = 0;
+		charHp = 10; // 체력
+		charAtt = 2; // 공격력
+		charExp = 0; // 경험치
+		charMp = 10; // 마나소비량
+		floorCount = 0;
 		// game_vo의 닉네임을 불러와서 넣어줘야함.
 
 		conn();
-		String sql = "insert into charact values(?,?,?,?,?,?)";
+		String sql = "insert into charact values(?,?,?,?,?,?,?)";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -77,6 +119,7 @@ public class Game_DAO {
 			psmt.setInt(4, charExp);
 			psmt.setInt(5, charMp);
 			psmt.setInt(6, floorCount);
+			psmt.setInt(7, lv);
 
 			int count = psmt.executeUpdate(); // 실행
 
@@ -91,9 +134,39 @@ public class Game_DAO {
 		} finally {
 			close();
 		}
-		Game_VO gVo=new Game_VO(nickname, charHp, charAtt, charExp, charMp, floorCount);
+		Fight fight = new Fight(nickname, charHp, charAtt, charExp, charMp, floorCount,lv);
+		return fight;
 
-	return gVo;
 	}
+
+	public void save_update(Fight fight) {
+		conn();
+		String sql = "update charact set charHp=?, charAtt=?, charExp=?, charMp=?, floorCount=? ,lv=? where nickname=?";
+		try {
+			psmt = conn.prepareStatement(sql);
+
+			psmt.setInt(1, fight.getHp());
+			psmt.setInt(2, fight.getAtt());
+			psmt.setInt(3, fight.getExp());
+			psmt.setInt(4, fight.getMp());
+			psmt.setInt(5, fight.getFloorCount());
+			psmt.setInt(6, fight.getLv());
+
+			int count = psmt.executeUpdate();
+			if (count > 0) {
+				System.out.println("성공");
+			} else {
+				System.out.println("실패");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+			
+		}
+	}
+
+
 
 }

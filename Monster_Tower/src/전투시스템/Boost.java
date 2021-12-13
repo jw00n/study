@@ -11,6 +11,7 @@ package 전투시스템;
 		public int hp;
 		public int mana;
 		public int maxhp;
+		public int maxmp;
 		public int power;
 
 		public int getTowercnt() {
@@ -51,6 +52,14 @@ package 전투시스템;
 
 		public void setPower(int power) {
 			this.power = power;
+		}	
+
+		public int getMaxmp() {
+			return maxmp;
+		}
+
+		public void setMaxmp(int maxmp) {
+			this.maxmp = maxmp;
 		}
 
 		public void choice() {
@@ -62,7 +71,7 @@ package 전투시스템;
 			System.out.println("4.최대체력증가");
 		}
 
-		public static int recovery(int towercnt, int hp) {
+		public static int recovery(int towercnt, int hp, int maxhp) {
 
 			Random rd = new Random();
 
@@ -88,6 +97,9 @@ package 전투시스템;
 			int recovery = rd.nextInt(3);
 			System.out.println(arrys[recovery] + "만큼의 회복량이 결정됫습니다.");
 			result = hp + arrys[recovery];
+			if(hp>maxhp) {
+				result = hp + arrys[recovery]-hp%maxhp;
+			}
 			System.out.println(result);
 
 			return result;
@@ -104,7 +116,7 @@ package 전투시스템;
 
 		}
 
-		public static int manarecover(int towercnt, int mana) {
+		public static int manarecover(int towercnt, int mana, int maxmp) {
 
 			Random rd = new Random();
 
@@ -130,6 +142,9 @@ package 전투시스템;
 			int recovery = rd.nextInt(3);
 			System.out.println(arrys[recovery] + "만큼의 회복량이 결정됫습니다.");
 			result = mana + arrys[recovery];
+			if(mana>maxmp) {
+				result = mana + arrys[recovery]-mana%maxmp;
+			}
 			System.out.println(result);
 
 			return result;

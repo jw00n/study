@@ -2,7 +2,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 import Game.Game_DAO;
-import Game.Game_VO;
 import System.DAO;
 import System.VO;
 import 전투시스템.Boost;
@@ -26,14 +25,16 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		int ans = 0;
 		DAO dao = new DAO();
-		Game_VO game = new Game_VO();
-		Fight fight=new Fight();
-	
+//		Game_VO game = new Game_VO();
+		Game_DAO gDao = new Game_DAO();
+		Fight fight = new Fight();
+
 		int floorCount = 0; // 층수 출력용
 
 		Random rd = new Random();
+		boolean flag = true;
 
-		while (true) {
+		while (flag) {
 			System.out.println("[1]회원가입 [2]로그인 [3]랭킹 확인");
 			ans = sc.nextInt();
 
@@ -41,31 +42,25 @@ public class Main {
 				// 계정 생성
 				VO vo_register = dao.insert();
 				// 캐릭터 생성
-				Game_DAO gDao = new Game_DAO();
-				game = gDao.Initial_insert(vo_register.getName());
-				floorCount = game.getFloorCount();
+				fight = gDao.Initial_insert(vo_register.getName());
 
 			} else if (ans == 2) { // 로그인
 				VO vo_login = dao.select();
+				fight = gDao.select(vo_login.getName());
+
 				if (vo_login.getId() != null && vo_login.getPw() != null) {
 					System.out.println("로그인 성공");
 
 					while (true) {
 						System.out.println("[1] 게임시작 [2] 게임설명");
-
 						ans = sc.nextInt();
 
 						if (ans == 1) {
 							System.out.println("타워에 입장하셨습니다.");
 							// 인게임 타워
-
 							int e;// floor_index
-
-							
-							// 여기서 유저값을 넘겨주워야한다.
-							FightSpace fightSpace= new FightSpace();
+							FightSpace fightSpace = new FightSpace();
 							Boost boost = new Boost();
-
 							int i = 0;
 							while (true) {
 								System.out.println(i + "층에 입장하셨습니다.");
@@ -73,42 +68,48 @@ public class Main {
 									System.out.println("[1] 캐릭터 정보 확인  [2] 오르기 [3] 중단");
 									ans = sc.nextInt();
 									if (ans == 1) {
-										game.charPrint(); // 인쇄용
+										fight.charPrint(); // 인쇄용
 									} else if (ans == 2) {// 올라가기
 										break;
 									} else if (ans == 3) {
+										flag = false; // 게임종료
 										break;
 									} else {// 오입력
 										continue;
 									}
 								}
-								if (ans == 3) { // 중단하기라면 게임종료
-									System.out.println("게임이 종료되었습니다.");
-									System.out.println("캐릭터 정보를 확인하십시오.");
-									game.charPrint();
-									break;
-								}
 
 								e = rd.nextInt(2);
 								if (e == 0) {
-									fightSpace.Fight();
+									fightSpace.Fight(fight);
 								} else if (e == 1) {
 									boost.choice();
 									int input = sc.nextInt();
+									if (input == 1) {
+										boost.recovery(fight.getFloorCount(), fight.getHp(), fight.getVhp());// 타워 층,
+									} else if (input == 2) {
+										boost.powerup(fight.getAtt());// 공격력
+									} else if (input == 3) {
+										boost.manarecover(fight.getFloorCount(), fight.getMp(), fight.getVmp());// 타워층,
+									} else if (input == 4) {
+										boost.maxhpup(fight.getFloorCount(), fight.getVhp());// 타워층, 캐릭터 최대 체력
+									}
+								} else if (e == 2) {
+									System.out.println("빈 공간이다.");
 								}
-								i++;
 
-								game.setFloorCount(i);
+								i++;
+								fight.setFloorCount(i);
 
 							}
-
-							// 여기가 gameover?
-
 						} else if (ans == 2) {
 							System.out.println("게임설명");
 
 						}
+
 					}
+
+				
 
 				} else {
 					System.out.println("로그인 실패");
@@ -117,6 +118,8 @@ public class Main {
 				}
 
 			} else if (ans == 3) { // 랭킹
+				dao.rankSelect();
+				
 
 			} else {
 				System.out.println("잘못 입력하셨습니다.");
@@ -124,6 +127,13 @@ public class Main {
 			}
 		}
 
+		// 게임 종료
+		System.out.println("게임이 종료되었습니다.");
+		System.out.println("최종 스테이지 = " + fight.getFloorCount());
+		System.out.println("캐릭터 정보를 확인하십시오.");
+		fight.charPrint();
+		gDao.save_update(fight);
+		
 	}
 
 }

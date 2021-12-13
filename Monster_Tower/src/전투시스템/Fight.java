@@ -11,25 +11,41 @@ public class Fight {
 	private int exp;
 	private int att;
 	private int lv;
+	private int floorCount;
 	
 	public Fight() {
-		// TODO Auto-generated constructor stub
 	}
 	
-	public Fight(String name, String skill, int vhp, int hp, int vmp, int mp, int vexp, int exp, int att, int lv) {
-		super();
+	
+	public Fight(String name,  int hp, int mp, int exp, int att,int floorCount,int lv) {
 		this.name = name;
-		this.skill = skill;
-		this.vhp = vhp;
 		this.hp = hp;
-		this.vmp = vmp;
 		this.mp = mp;
-		this.vexp = vexp;
 		this.exp = exp;
 		this.att = att;
+		this.floorCount= floorCount;
 		this.lv = lv;
 	}
 
+	public Fight(int vhp, int vmp, int vexp) {
+		
+		this.vhp = vhp;
+		this.vmp = vmp;
+		this.vexp = vexp;
+		
+	}
+
+	
+	public void charPrint() {
+		System.out.println("닉네임 : "+name);
+		System.out.println("체력 : "+hp);
+		System.out.println("mp : "+mp);
+		System.out.println("공격력 : "+att);
+		System.out.println("경험치 : "+exp);
+	}
+
+	
+	
 	public int getLv() {
 		return lv;
 	}
@@ -108,6 +124,19 @@ public class Fight {
 
 	public void setAtt(int att) {
 		this.att = att;
+	}
+
+
+
+
+	public int getFloorCount() {
+		return floorCount;
+	}
+
+
+
+	public void setFloorCount(int floorCount) {
+		this.floorCount = floorCount;
 	}
 	
 	

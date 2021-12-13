@@ -18,15 +18,14 @@ public class DAO {
 	Connection conn = null;
 	ResultSet rs = null;
 	Scanner sc = new Scanner(System.in);
-	
-	//vo에 넣을 변수들
-	String vo_id=null;
-	String vo_pw=null;
-	String vo_name=null;
-	int vo_best=0;
-	Date vo_date= null;
+
+	// vo에 넣을 변수들
+	String vo_id = null;
+	String vo_pw = null;
+	String vo_name = null;
+	int vo_best = 0;
+	Date vo_date = null;
 	int vo_count = 0;
-	
 
 	public void conn() {
 		try {
@@ -67,7 +66,6 @@ public class DAO {
 		String id = sc.next();
 		System.out.print("pw 입력>>");
 		String pw = sc.next();
-		
 
 		conn();
 		String sql = "select * from member where memberid = ? and memberpw=?";
@@ -78,12 +76,12 @@ public class DAO {
 			psmt.setString(2, pw);
 			rs = psmt.executeQuery();
 			while (rs.next()) {
-			//	System.out.pr213intln(rs.getString("name"));
-				//vo 값 입력
-				vo_id=rs.getString("memberid");
-				vo_pw=rs.getString("memberpw");
+				// System.out.pr213intln(rs.getString("name"));
+				// vo 값 입력
+				vo_id = rs.getString("memberid");
+				vo_pw = rs.getString("memberpw");
 				vo_name = rs.getString("nickname");
-				
+
 			}
 
 		} catch (SQLException e) {
@@ -98,7 +96,7 @@ public class DAO {
 				}
 			}
 		}
-		VO vo=new VO(vo_id, vo_pw, vo_name);
+		VO vo = new VO(vo_id, vo_pw, vo_name);
 		return vo;
 	}
 
@@ -112,7 +110,7 @@ public class DAO {
 		vo_pw = sc.next();
 		System.out.print("닉네임>> ");
 		vo_name = sc.next();
-	
+
 		conn();
 		String sql = "insert into member(memberid,memberpw,nickname) values(?,?,?)";
 		try {
@@ -135,12 +133,50 @@ public class DAO {
 		} finally {
 			close();
 		}
-		VO vo=new VO(vo_id, vo_pw, vo_name);//캐릭터를 저장
+		VO vo = new VO(vo_id, vo_pw, vo_name);// 캐릭터를 저장
 		return vo;
 
 	}
 
-	public void update() {}
+	// 랭킹화면
+	public void rankSelect() {
+		// 입력받은 아이디가 있는 정보 출력
+		
+	
+		conn();
+		
+		String sql = "select * from member where rownum <=10 order by best desc";
+		try {
+				psmt = conn.prepareStatement(sql);
+				
+				 rs = psmt.executeQuery();
+				
+				while (rs.next()) {
+					String memeberid = rs.getString("memberid");
+					System.out.print(memeberid+"   ");
+					String nickname = rs.getString("nickname");
+					System.out.print(nickname+"   ");
+					String Best  = rs.getString("best");
+					System.out.println(Best); }
+				
+			
+		
+		} catch (SQLException e) {
 
+			e.printStackTrace();
+		} finally {
+			close();
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
 
+					e.printStackTrace();
+				}
+			}
+		}
+		
+
+		
+	}
 }
