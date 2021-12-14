@@ -1,22 +1,21 @@
+package JDBC;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class ex04_UPDATE {
+public class ex03_DELETE {
 
 	public static void main(String[] args) {
-
 		PreparedStatement psmt = null;
 		Connection conn = null;
 		
 		//변경할 부분
 
 		Scanner sc = new Scanner(System.in);
-		System.out.println("업데이트 할 정보를 입력하세요.");
+		System.out.println("아이디를 입력하세요.");
 
-		// id와 pw를 입력받아서 info 테이블에서 해당id를 검색하고 pw를 입력받은 값으로 변경
 		System.out.print("ID>> ");
 		String id = sc.next();
 		System.out.print("PW>> ");
@@ -32,12 +31,11 @@ public class ex04_UPDATE {
 				conn = DriverManager.getConnection(url, db_id, db_pw);
 				
 				//변경할 부분
-				String sql = "update info set pw= ? where id = ?";
+				String sql = "delete from info where id = ? and pw = ?";
 				psmt = conn.prepareStatement(sql);
 
-				psmt.setString(2, id);
-				psmt.setString(1, pw);
-				
+				psmt.setString(1, id);
+				psmt.setString(2, pw);
 				
 				int count = psmt.executeUpdate();
 				if (count > 0) {
@@ -45,9 +43,6 @@ public class ex04_UPDATE {
 				} else {
 					System.out.println("실패");
 				}
-				
-				
-				
 
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -66,6 +61,9 @@ public class ex04_UPDATE {
 			}
 
 		}
+	
+		
+		
 
 	}
 
