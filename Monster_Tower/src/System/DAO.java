@@ -138,29 +138,80 @@ public class DAO {
 
 	}
 
+	public void last_insert(int floorCount) {
+
+		conn();
+		String sql = "update member set count=? where nickname= ? ";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, floorCount);
+			psmt.setString(2, vo_name);
+
+			int count = psmt.executeUpdate();
+			if (count > 0) {
+				System.out.println("기록 등록");
+			} else {
+				System.out.println("실패");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+
+		}
+
+	}
+
+	public void lastdate_update(String id) {
+
+		conn();
+		String sql = "update member set lastdate = to_date(sysdate, 'RRRR-MM-DD HH24:MI:SS') where memberid=?";
+		
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, id);
+
+			int count = psmt.executeUpdate();
+			if (count > 0) {
+				System.out.println("date 성공");
+			} else {
+				System.out.println("실패");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+
+		}
+
+	}
+
 	// 랭킹화면
 	public void rankSelect() {
 		// 입력받은 아이디가 있는 정보 출력
-		
-	
+
 		conn();
-		
-		String sql = "select * from member where rownum <=10 order by best desc";
+
+		String sql = "select * from member where rownum <=10 order by count ";
 		try {
-				psmt = conn.prepareStatement(sql);
-				
-				 rs = psmt.executeQuery();
-				
-				while (rs.next()) {
-					String memeberid = rs.getString("memberid");
-					System.out.print(memeberid+"   ");
-					String nickname = rs.getString("nickname");
-					System.out.print(nickname+"   ");
-					String Best  = rs.getString("best");
-					System.out.println(Best); }
-				
-			
-		
+			psmt = conn.prepareStatement(sql);
+
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				String memeberid = rs.getString("memberid");
+				System.out.print(memeberid + "   ");
+				String nickname = rs.getString("nickname");
+				System.out.print(nickname + "   ");
+				int count = rs.getInt("count");
+				System.out.println(count);
+			}
+
 		} catch (SQLException e) {
 
 			e.printStackTrace();
@@ -175,8 +226,6 @@ public class DAO {
 				}
 			}
 		}
-		
 
-		
 	}
 }

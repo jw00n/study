@@ -5,22 +5,19 @@ import java.util.Scanner;
 
 public class FightSpace {
 
-	public void Fight(Fight user) {
+	public void Fight(Fight user , Mon mon) {
 		Scanner sc = new Scanner(System.in);
 		Random rd = new Random();
 		int he = 0;
 		int att = 0;
 		int j = 2;
 		
-		user.setVexp(10);
-		user.setVhp(10);
-		user.setVmp(10);
-		user.setLv(1);
-		user.setSkill("스킬명");
+	
 		
 		he = rd.nextInt(j) + 4;
 		att = rd.nextInt(j) + 1;
-		Mon emon = new Mon("몬스터", he, he, he, att);
+		Mon emon = new Mon("몬스터", mon.getHp(), mon.getHp(), mon.getHp(), mon.getAtt() , mon.getJ());
+
 
 		// 랜덤한 공격력과 체력을 가진 몬스터 출현
 		System.out.println("몬스터와 마주쳤다.");

@@ -76,7 +76,7 @@ public class Game_DAO {
 				nickname = rs.getString("nickname");
 				charHp = rs.getInt("charhp");
 				charAtt = rs.getInt("charatt");
-				charExp = rs.getInt("chatexp");
+				charExp = rs.getInt("charexp");
 				charMp = rs.getInt("charmp");
 				floorCount = rs.getInt("count");
 				lv= rs.getInt("lv");
@@ -105,6 +105,7 @@ public class Game_DAO {
 		charExp = 0; // 경험치
 		charMp = 10; // 마나소비량
 		floorCount = 0;
+		lv=1;
 		// game_vo의 닉네임을 불러와서 넣어줘야함.
 
 		conn();
@@ -141,7 +142,7 @@ public class Game_DAO {
 
 	public void save_update(Fight fight) {
 		conn();
-		String sql = "update charact set charHp=?, charAtt=?, charExp=?, charMp=?, floorCount=? ,lv=? where nickname=?";
+		String sql = "update charact set charhp=?, charatt=?, charexp=?, charmp=?, count=? ,lv=? where nickname=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 
@@ -151,6 +152,7 @@ public class Game_DAO {
 			psmt.setInt(4, fight.getMp());
 			psmt.setInt(5, fight.getFloorCount());
 			psmt.setInt(6, fight.getLv());
+			psmt.setString(7, fight.getName());
 
 			int count = psmt.executeUpdate();
 			if (count > 0) {
