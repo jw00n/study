@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="Ex2021_11_24_25">
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <property name="context-root" value="Ex2021_11_24_25"/>
+        <property name="java-output-path" value="/Ex2021_11_24_25/bin"/>
+    </wb-module>
+</project-modules>
