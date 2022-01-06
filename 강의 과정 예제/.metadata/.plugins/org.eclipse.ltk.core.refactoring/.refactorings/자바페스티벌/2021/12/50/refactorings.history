@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;자바페스티벌.syso.java&apos; to &apos;ex11.java&apos;&#x0D;&#x0A;- Original project: &apos;자바페스티벌&apos;&#x0D;&#x0A;- Original element: &apos;자바페스티벌.syso.java&apos;&#x0D;&#x0A;- Renamed element: &apos;자바페스티벌.ex11.java&apos;" description="Rename compilation unit &apos;syso.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;자바페스티벌{syso.java" name="ex11.java" references="false" stamp="1638845055964" version="1.0"/>
+</session>
