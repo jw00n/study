@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename local variable &apos;scoreToString&apos; in &apos;ex1202_03.score(...)&apos; to &apos;scoreCount&apos;&#x0D;&#x0A;- Original project: &apos;배포용 문제 3주차&apos;&#x0D;&#x0A;- Original element: &apos;ex1202_03.score(String[]).scoreToString&apos;&#x0D;&#x0A;- Renamed element: &apos;scoreToString&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;scoreToString&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{ex1202_03.java[ex1202_03~score~\[QString;@scoreToString!241!262!250!262!\[QString;!0!true" name="scoreCount" references="true" stamp="1638508920994" version="1.0"/>
-</session>
